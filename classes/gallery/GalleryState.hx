@@ -62,6 +62,7 @@ class GalleryState extends MusicBeatState
         for (i in 0...imagePaths.length) {
             var newItem = new GalleryImage();
             newItem.loadGraphic(Paths.image(imagePath + imagePaths[i]));
+            newItem.antialiasing = ClientPrefs.data.antialiasing;
             newItem.screenCenter();
             newItem.ID = i;
             itemGroup.add(newItem);
