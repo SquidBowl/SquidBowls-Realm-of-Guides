@@ -101,7 +101,6 @@ class GalleryState extends MusicBeatState
         changeSelection();
     
         super.create();
-        CustomFadeTransition.nextCamera = FlxG.cameras.list[FlxG.cameras.list.length - 1];
     }
 
     override public function update(elapsed:Float):Void
