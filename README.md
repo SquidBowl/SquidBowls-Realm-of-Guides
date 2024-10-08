@@ -18,7 +18,7 @@ After clicking the button prompted above, it'll open the menu below. You’ll ne
 
 ![](https://github.com/SquidBowl/FNF-Texture-Atlas-Guide/blob/main/images/exportmenu.png)
 
-Open the folder and look inside. Inside should be 2 .json files, the important one being “Animation.json”, the other one (spritemap1.json) is necessary too but not usually needed to be opened unless you have a pathing issue with the image attached which shouldn't happen unless you manually break something past this point in the guide.
+Open the folder and look inside. Inside should be 2 .json files, the important one being “Animation.json”, the other one (spritemap1.json) is necessary too but not usually needed to be opened unless you have a pathing issue with the image attached which shouldn't happen unless you manually break something past this point in the guide. The image provided down below is outdated and won't update for some reason, give me a bit. Your exported preview in adobe should match the exported file.
 
 ![](https://github.com/SquidBowl/FNF-Texture-Atlas-Guide/blob/main/images/insidefolder.png)
 
