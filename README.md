@@ -22,7 +22,7 @@ Open the folder and look inside. Inside should be 2 .json files, the important o
 
 ![](https://github.com/SquidBowl/FNF-Texture-Atlas-Guide/blob/main/images/insidefolder.png)
 
-Open “Animation.json” in Notepad or whatever program you happen to use to read .json files, and look for a line like the one below. This is titled “Export/idle” because that is where the symbol is located in the FLA file. Which is the name of the symbol inside of that combined symbol (which I titled "thisisall1symbol") we made earlier. We will in my case, be copying the name of the SN inside the quotation marks and red box.
+Open “Animation.json” in Notepad or whatever program you use to read .json files, and look for a line like the one below. This is titled “Export/idle” because that is where the symbol is located in the FLA file. Which is the name of the symbol inside of that combined symbol (which I titled "thisisall1symbol") we made earlier. In my case, we will be copying the SN's name inside the quotation marks and red box.
 
 ![](https://github.com/SquidBowl/FNF-Texture-Atlas-Guide/blob/main/images/insidejson.png)
 
