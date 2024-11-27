@@ -13,6 +13,11 @@ import sys.io.File;
 import openfl.filters.ShaderFilter;
 import haxe.Json;
 
+/*
+* HEY! I know you see this, CREDIT ME! IF YOU PUBLISH A MOD USING THIS SCRIPT OR EDIT IT IN ANY WAY, YOU HAVE TO CREDIT ME! NOT DOING SO WILL BE FOLLOWED BY A REPORT, TAKING DOWN YOUR MOD AND MAKING YOU LOOK LIKE
+* A CLOWN. SO PLEASE, JUST CREDIT MY GAMEBANANA -> https://gamebanana.com/members/2041479
+*/
+
 class GalleryState extends MusicBeatState
 {
     // DATA STUFF
