@@ -1,17 +1,12 @@
 package states;
 
-import flixel.FlxG;
-import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
-
 import flixel.math.FlxMath;
-import flixel.addons.display.FlxBackdrop;
-
-import flixel.addons.display.FlxRuntimeShader;
 import sys.io.File;
-import openfl.filters.ShaderFilter;
 import haxe.Json;
+import flixel.effects.FlxFlicker;
+import flixel.group.FlxSpriteGroup;
 
 /*
 * HEY! I know you see this, CREDIT ME! IF YOU PUBLISH A MOD USING THIS SCRIPT OR EDIT IT IN ANY WAY, YOU HAVE TO CREDIT ME! NOT DOING SO WILL BE FOLLOWED BY A REPORT, TAKING DOWN YOUR MOD AND MAKING YOU LOOK LIKE
@@ -28,10 +23,12 @@ class GalleryState extends MusicBeatState
     var imageTitle:Array<String>;
     var linkOpen:Array<String>;
     var descriptionText:FlxText;
-    var tvShader:FlxRuntimeShader;
 
     var currentIndex:Int = 0;
     var allowInputs:Bool = true;
+
+    var uiGroup:FlxSpriteGroup;
+    var hideUI:Bool = false;
 
     // UI STUFF
     var imageSprite:FlxSprite;
@@ -45,8 +42,6 @@ class GalleryState extends MusicBeatState
 
     override public function create():Void
     {   
-        // FlxG.sound.playMusic(Paths.music("galleryMusic"));
-
         var jsonData:String = File.getContent("assets/shared/images/gallery/gallery.json");
         var imageData:Array<ImageData> = haxe.Json.parse(jsonData);
 
@@ -63,7 +58,8 @@ class GalleryState extends MusicBeatState
         }
     
         itemGroup = new FlxTypedGroup<GalleryImage>();
-    
+        uiGroup = new FlxSpriteGroup();
+
         for (i in 0...imagePaths.length) {
             var newItem = new GalleryImage();
             newItem.loadGraphic(Paths.image(imagePath + imagePaths[i]));
@@ -79,7 +75,7 @@ class GalleryState extends MusicBeatState
 
         bars = new FlxSprite(10, 50).loadGraphic(Paths.image("gallery/ui/bars"));
         bars.screenCenter();
-        add(bars);
+        uiGroup.add(bars);
 
         add(itemGroup);
     
@@ -88,21 +84,19 @@ class GalleryState extends MusicBeatState
         descriptionText.screenCenter();
         descriptionText.y += 275;
         descriptionText.setFormat(Paths.font("vcr.ttf"), 32);
-        add(descriptionText);
+        uiGroup.add(descriptionText);
     
         titleText = new FlxText(50, 50, FlxG.width - 100, imageTitle[currentIndex]);
         titleText.screenCenter(X);
         titleText.setFormat(null, 40, 0xffffff, "center");
         titleText.setFormat(Paths.font("vcr.ttf"), 32);
-        add(titleText);
+        uiGroup.add(titleText);
     
-        backspace = new FlxSprite(0, 560);
-        backspace.frames = Paths.getSparrowAtlas('gallery/ui/backspace');
-        backspace.animation.addByPrefix('backspace to exit white0', "backspace to exit white0", 24);
-        backspace.animation.play('backspace to exit white0');
-        backspace.updateHitbox();
-        add(backspace);
+		backspace = new FlxSprite(0, 560).loadGraphic(Paths.image("menus/gallery/ui/exit"));
+		uiGroup.add(backspace);
     
+        add(uiGroup);
+
         persistentUpdate = true;
         changeSelection();
     
@@ -123,11 +117,20 @@ class GalleryState extends MusicBeatState
             allowInputs = false;
             FlxG.sound.play(Paths.sound('cancelMenu'));
             MusicBeatState.switchState(new MainMenuState());
-            backspace.animation.addByPrefix('backspace to exit', "backspace to exit", 12);
-            backspace.animation.play('backspace to exit');
-            // FlxG.sound.playMusic(Paths.music("freakyMenu"));
+			FlxFlicker.flicker(backspace, 0.4, 0.10, false);
         }
     
+		if (FlxG.keys.justPressed.X && !hideUI)
+		{
+			hideUI = true;
+			FlxTween.tween(uiGroup, {alpha: 0}, 0.2, {ease: FlxEase.linear});
+		}
+		else if (FlxG.keys.justPressed.X && hideUI)
+		{
+			hideUI = false;
+			FlxTween.tween(uiGroup, {alpha: 1}, 0.2, {ease: FlxEase.linear});
+		}
+
         if (controls.ACCEPT && allowInputs)
             CoolUtil.browserLoad(linkOpen[currentIndex]);
     }
