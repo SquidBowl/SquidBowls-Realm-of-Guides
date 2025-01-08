@@ -78,17 +78,18 @@ class GalleryState extends MusicBeatState
         add(itemGroup);
     
         descriptionText = new FlxText(50, -100, FlxG.width - 100, imageDescriptions[currentIndex]);
-        descriptionText.setFormat("vcr.ttf", 25, 0xffffff, "center");
+        descriptionText.setFormat("vcr.ttf", 32, 0xffffff, "center");
         descriptionText.screenCenter();
         descriptionText.y += 275;
         uiGroup.add(descriptionText);
     
-        titleText = new FlxText(50, 50, FlxG.width - 100, imageTitle[currentIndex]);
-        titleText.screenCenter(X);
-        titleText.setFormat(Paths.font("vcr.ttf"), 32);
-        uiGroup.add(titleText);
+		titleText = new FlxText(50, -100, FlxG.width - 100, imageTitle[currentIndex]);
+		titleText.screenCenter();
+		titleText.setFormat(Paths.font("vcr.ttf"), 32, 0xffffff, "center");
+        titleText.y -= 275;
+		uiGroup.add(titleText);
     
-		backspace = new FlxSprite(0, 560).loadGraphic(Paths.image("menus/gallery/ui/exit"));
+		backspace = new FlxSprite(0, 560).loadGraphic(Paths.image("gallery/ui/exit"));
 		uiGroup.add(backspace);
     
         add(uiGroup);
