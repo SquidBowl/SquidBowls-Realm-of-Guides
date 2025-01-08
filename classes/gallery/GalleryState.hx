@@ -69,12 +69,10 @@ class GalleryState extends MusicBeatState
             itemGroup.add(newItem);
         }
     
-        background = new FlxSprite(10, 50).loadGraphic(Paths.image("gallery/ui/background"));
-        background.screenCenter();
+        background = new FlxSprite().loadGraphic(Paths.image("gallery/ui/background"));
         add(background);
 
-        bars = new FlxSprite(10, 50).loadGraphic(Paths.image("gallery/ui/bars"));
-        bars.screenCenter();
+        bars = new FlxSprite().loadGraphic(Paths.image("gallery/ui/bars"));
         uiGroup.add(bars);
 
         add(itemGroup);
@@ -83,12 +81,10 @@ class GalleryState extends MusicBeatState
         descriptionText.setFormat("vcr.ttf", 25, 0xffffff, "center");
         descriptionText.screenCenter();
         descriptionText.y += 275;
-        descriptionText.setFormat(Paths.font("vcr.ttf"), 32);
         uiGroup.add(descriptionText);
     
         titleText = new FlxText(50, 50, FlxG.width - 100, imageTitle[currentIndex]);
         titleText.screenCenter(X);
-        titleText.setFormat(null, 40, 0xffffff, "center");
         titleText.setFormat(Paths.font("vcr.ttf"), 32);
         uiGroup.add(titleText);
     
