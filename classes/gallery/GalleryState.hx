@@ -24,6 +24,7 @@ class GalleryState extends MusicBeatState {
 	var descriptionText:FlxText;
 	var imageData:Array<ImageData>;
 
+	// UI STUFF
 	var currentIndex:Int = 0;
 	var allowInputs:Bool = true;
 
@@ -31,8 +32,6 @@ class GalleryState extends MusicBeatState {
 	var hideUI:Bool = false;
 	var intendedColor:FlxColor;
 	var colorTween:FlxTween;
-
-	// UI STUFF
 	var imageSprite:FlxSprite;
 	var background:FlxSprite;
 	var titleText:FlxText;
@@ -173,7 +172,7 @@ class GalleryState extends MusicBeatState {
 		}
 	}
 
-	function boundTo(value:Float, min:Float, max:Float):Float {
+	public static function boundTo(value:Float, min:Float, max:Float):Float {
 		if (Math.isNaN(value))
 			return min;
 
@@ -185,7 +184,7 @@ class GalleryState extends MusicBeatState {
 		return newValue;
 	}
 
-	function colorFromString(color:String):FlxColor {
+	public static function colorFromString(color:String):FlxColor {
 		var hideChars = ~/[\t\n\r]/;
 		var color:String = hideChars.split(color).join('');
 		color = StringTools.trim(color);
