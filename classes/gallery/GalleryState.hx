@@ -173,7 +173,7 @@ class GalleryState extends MusicBeatState {
 		}
 	}
 
-	private static function boundTo(value:Float, min:Float, max:Float):Float {
+	function boundTo(value:Float, min:Float, max:Float):Float {
 		if (Math.isNaN(value))
 			return min;
 
@@ -185,7 +185,7 @@ class GalleryState extends MusicBeatState {
 		return newValue;
 	}
 
-	private static function colorFromString(color:String):FlxColor {
+	function colorFromString(color:String):FlxColor {
 		var hideChars = ~/[\t\n\r]/;
 		var color:String = hideChars.split(color).join('');
 		color = StringTools.trim(color);
