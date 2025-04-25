@@ -3,18 +3,21 @@
         "path": "keoiki",
         "description": "Drawn by ???",
         "title": "Cute Cat",
-        "link": "https://gamebanana.com/tools/13883"
+        "link": "https://gamebanana.com/tools/13883",
+        "color": "FF0000"
     },
     {
         "path": "keoicool",
         "description": "Drawn by ???",
         "title": "Cool Cat",
-        "link": "https://gamebanana.com/tools/13883"
+        "link": "https://gamebanana.com/tools/13883",
+        "color": "FEEFCD"
     },
     {
         "path": "nope",
         "description": "Drawn by ???",
         "title": "wtf",
-        "link": "https://gamebanana.com/tools/13883"
+        "link": "https://gamebanana.com/tools/13883",
+        "color": "CD7CEB"
     }
 ]
