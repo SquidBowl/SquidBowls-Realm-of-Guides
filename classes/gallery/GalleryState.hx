@@ -172,18 +172,6 @@ class GalleryState extends MusicBeatState {
 		}
 	}
 
-	public static function boundTo(value:Float, min:Float, max:Float):Float {
-		if (Math.isNaN(value))
-			return min;
-
-		var newValue:Float = value;
-		if (newValue < min)
-			newValue = min;
-		else if (newValue > max)
-			newValue = max;
-		return newValue;
-	}
-
 	public static function colorFromString(color:String):FlxColor {
 		var hideChars = ~/[\t\n\r]/;
 		var color:String = hideChars.split(color).join('');
@@ -205,8 +193,11 @@ class GalleryImage extends FlxSprite {
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
-		x = GalleryState.boundTo(elapsed * lerpSpeed, 0, 1);
-		x = FlxMath.lerp(x, (FlxG.width - width) / 2 + posX * 760, x);
+
+		if (width > 0) {
+			var targetX = (FlxG.width - width) / 2 + posX * 760;
+			x = FlxMath.lerp(x, targetX, elapsed * lerpSpeed);
+		}
 	}
 }
 
